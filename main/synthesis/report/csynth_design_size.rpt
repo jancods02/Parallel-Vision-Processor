@@ -1,0 +1,74 @@
+================================================================
+== Design Size Report
+================================================================
+
+* Total Instructions per Compilation Phase
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Phase         | Step                        | Instructions | Description                                                                            |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+| Compile/Link  |                             | 201,534 *    | After all functions are compiled and linked into a single design                       |
+|               |                             |              |                                                                                        |
+| Unroll/Inline |                             |              | After user unroll and inline pragmas are applied                                       |
+|               | (1) unroll                  |  33,062      | user unroll pragmas are applied                                                        |
+|               | (2) simplification          |  18,079      | simplification of applied user unroll pragmas                                          |
+|               | (3) inline                  |  16,482      | user inline pragmas are applied                                                        |
+|               | (4) simplification          |  15,959      | simplification of applied user inline pragmas                                          |
+|               |                             |              |                                                                                        |
+| Array/Struct  |                             |              | After user array partition and struct aggregate/disaggregate pragmas are applied       |
+|               | (1) array partition         |  27,956      | user array partition pragmas are applied                                               |
+|               | (2) simplification          |  20,904      | simplification of applied user array partition & struct aggregate/disaggregate pragmas |
+|               | (3) aggregate/disaggregate  |  20,982      | user struct aggregate/disaggregate pragmas are applied                                 |
+|               | (4) array reshape           |  39,562      | apply array reshape pragmas                                                            |
+|               | (5) access patterns         |  45,243      | array access pattern optmizations                                                      |
+|               |                             |              |                                                                                        |
+| Performance   |                             |              | After transformations are applied to meet performance pragma targets                   |
+|               | (1) loop simplification     |  39,762      | loop and instruction simplification                                                    |
+|               | (2) parallelization         |  37,262      | loops are unrolled or pipelined to meet performance targets                            |
+|               | (3) array partition         |  44,521      | arrays are partitioned to meet performance targets                                     |
+|               | (4) simplification          |  44,002      | simplification of design after performance transformations                             |
+|               |                             |              |                                                                                        |
+| HW Transforms |                             |              | After hardware transfomations                                                          |
+|               | (1) lowering                |  40,298      | initial conversion to HW specific instructions                                         |
+|               | (2) optimizations           |  39,136      | high level synthesis optimizations                                                     |
++---------------+-----------------------------+--------------+----------------------------------------------------------------------------------------+
+    * - Exceeded design size warning message threshold
+
+* Instructions per Function for each Compilation Phase
++-------------------------------------+---------------------+-------------------+------------------+------------------+------------------+---------------+
+| Function                            | Location            | Compile/Link      | Unroll/Inline    | Array/Struct     | Performance      | HW Transforms |
++-------------------------------------+---------------------+-------------------+------------------+------------------+------------------+---------------+
+| + unet_pvm_top                      | unet_top.cpp:5      | 201,534 *         | 15,959           | 45,243           | 44,002           | 39,136        |
+|  + custom_pvm_layer<config_enc5...  | pvm_layer.h:161     | 201,496           | 15,930           | 45,190           | 43,918           | 39,038        |
+|   + pvm_split_and_norm<config_en... | pvm_layer.h:11      |  6,577            |   801            | 1,818            | 1,118            |               |
+|      sqrt                           | sqrtfloat.cpp:6     |      2            |                  |                  |                  |               |
+|     VisionMambaBlock                | vision_mamba.h:10   |     28 (4 calls)  |                  |                  |                  |               |
+|   + run                             | vision_mamba.cpp:16 | 186,308 (4 calls) | 12,680 (4 calls) | 39,731 (4 calls) | 39,231 (4 calls) |               |
+|      RMSNorm                        | layers.h:15         |  2,960 (4 calls)  |                  |                  |                  |               |
+|      InputProjection                | layers.h:56         |     12 (4 calls)  |                  |                  |                  |               |
+|      Conv1DBlock                    | layers.h:80         |  4,352 (4 calls)  |                  |                  |                  |               |
+|      OutputBlock                    | layers.h:123        |     12 (4 calls)  |                  |                  |                  |               |
+|      split_input                    | vision_mamba.cpp:7  |    128 (4 calls)  |    60 (4 calls)  | 1,712 (4 calls)  | 1,712 (4 calls)  |               |
+|    + forward                        | layers.h:21         | 16,876 (4 calls)  | 2,224 (4 calls)  | 4,004 (4 calls)  | 3,784 (4 calls)  |               |
+|       sqrt                          | sqrtfloat.cpp:6     |      8 (4 calls)  |                  |                  |                  |               |
+|      forward                        | layers.h:58         |    128 (4 calls)  |    60 (4 calls)  |   455 (4 calls)  |   455 (4 calls)  |               |
+|    + forward                        | layers.h:91         | 22,508 (4 calls)  | 1,520 (4 calls)  | 4,444 (4 calls)  | 4,948 (4 calls)  |               |
+|       silu_approx                   | activations.h:46    | 17,396 (4 calls)  |                  |                  |                  |               |
+|    + forward                        | s6_param_gen.cpp:6  | 38,736 (4 calls)  | 2,872 (4 calls)  | 7,876 (4 calls)  | 7,844 (4 calls)  |               |
+|       softplus_approx               | activations.h:36    | 28,400 (4 calls)  |                  |                  |                  |               |
+|    + forward                        | s6_layer.cpp:6      | 78,924 (4 calls)  | 3,268 (4 calls)  | 8,008 (4 calls)  | 10,156 (4 calls) |               |
+|       exp_lut_approx                | activations.h:7     | 69,780 (4 calls)  |                  |                  |                  |               |
+|    + forward                        | layers.h:125        | 21,168 (4 calls)  | 2,340 (4 calls)  | 5,544 (4 calls)  | 7,944 (4 calls)  |               |
+|       silu_approx                   | activations.h:46    | 17,396 (4 calls)  |                  |                  |                  |               |
+|   + pvm_merge_and_project<config... | pvm_layer.h:66      |  8,510            | 2,425            | 3,598            | 3,526            |               |
+|      sqrt                           | sqrtfloat.cpp:6     |      2            |                  |                  |                  |               |
++-------------------------------------+---------------------+-------------------+------------------+------------------+------------------+---------------+
+    * - Exceeded design size warning message threshold
+
+* Design Size Message Settings
++---------------------------------------------+--------+------------------------------------------------------------------+
+| Message Setting                             | Value  | Description                                                      |
++---------------------------------------------+--------+------------------------------------------------------------------+
+| config_compile -design_size_maximum_warning | 100000 | Show a warning when total design instructions exceeds this value |
++---------------------------------------------+--------+------------------------------------------------------------------+
+
+

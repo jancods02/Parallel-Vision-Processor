@@ -1,0 +1,217 @@
+
+
+================================================================
+== Vitis HLS Report for 'run_Loop_VITIS_LOOP_87_3_proc_9'
+================================================================
+* Date:           Wed Feb 25 16:06:47 2026
+
+* Version:        2025.1 (Build 6135595 on May 21 2025)
+* Project:        unet_pvm_top
+* Solution:       hls (Vivado IP Flow Target)
+* Product family: zynquplus
+* Target device:  xck26-sfvc784-2LV-c
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  5.00 ns|  2.800 ns|     0.50 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval |                    Pipeline                    |
+    |   min   |   max   |    min   |    max   | min | max |                      Type                      |
+    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+    |       98|       98|  0.490 us|  0.490 us|   97|   97|  loop auto-rewind stp (delay=0 clock cycles(s))|
+    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-----------------------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                                   |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |             Loop Name             |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +-----------------------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- VITIS_LOOP_87_3_VITIS_LOOP_88_4  |       96|       96|         1|          1|          1|    96|       yes|
+        +-----------------------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       0|      74|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |        -|     -|       -|       -|    -|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       0|     279|    -|
+|Register         |        -|     -|     113|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |        0|     0|     113|     353|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      288|  1248|  234240|  117120|   64|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        0|     0|      ~0|      ~0|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |           Variable Name          | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |add_ln87_1_fu_323_p2              |         +|   0|  0|   9|           2|           1|
+    |add_ln87_fu_297_p2                |         +|   0|  0|  14|           7|           1|
+    |add_ln88_fu_470_p2                |         +|   0|  0|  13|           6|           1|
+    |icmp_ln87_fu_291_p2               |      icmp|   0|  0|  14|           7|           7|
+    |icmp_ln88_fu_309_p2               |      icmp|   0|  0|  14|           6|           7|
+    |ap_block_state1_pp0_stage0_iter0  |        or|   0|  0|   2|           1|           1|
+    |select_ln87_1_fu_329_p3           |    select|   0|  0|   2|           1|           2|
+    |select_ln87_fu_315_p3             |    select|   0|  0|   6|           1|           1|
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |Total                             |          |   0|  0|  74|          31|          21|
+    +----------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +--------------------------------------+----+-----------+-----+-----------+
+    |                 Name                 | LUT| Input Size| Bits| Total Bits|
+    +--------------------------------------+----+-----------+-----+-----------+
+    |ap_done_int                           |   9|          2|    1|          2|
+    |ap_return_0                           |   9|          2|    4|          8|
+    |ap_return_1                           |   9|          2|    4|          8|
+    |ap_return_10                          |   9|          2|    4|          8|
+    |ap_return_11                          |   9|          2|    4|          8|
+    |ap_return_12                          |   9|          2|    4|          8|
+    |ap_return_13                          |   9|          2|    4|          8|
+    |ap_return_14                          |   9|          2|    4|          8|
+    |ap_return_15                          |   9|          2|    4|          8|
+    |ap_return_16                          |   9|          2|    4|          8|
+    |ap_return_17                          |   9|          2|    4|          8|
+    |ap_return_18                          |   9|          2|    4|          8|
+    |ap_return_19                          |   9|          2|    4|          8|
+    |ap_return_2                           |   9|          2|    4|          8|
+    |ap_return_20                          |   9|          2|    4|          8|
+    |ap_return_21                          |   9|          2|    4|          8|
+    |ap_return_22                          |   9|          2|    4|          8|
+    |ap_return_23                          |   9|          2|    4|          8|
+    |ap_return_3                           |   9|          2|    4|          8|
+    |ap_return_4                           |   9|          2|    4|          8|
+    |ap_return_5                           |   9|          2|    4|          8|
+    |ap_return_6                           |   9|          2|    4|          8|
+    |ap_return_7                           |   9|          2|    4|          8|
+    |ap_return_8                           |   9|          2|    4|          8|
+    |ap_return_9                           |   9|          2|    4|          8|
+    |ap_sig_allocacmp_i_load               |   9|          2|    6|         12|
+    |ap_sig_allocacmp_indvar_flatten_load  |   9|          2|    7|         14|
+    |ap_sig_allocacmp_k_load               |   9|          2|    2|          4|
+    |i_fu_100                              |   9|          2|    6|         12|
+    |indvar_flatten_fu_108                 |   9|          2|    7|         14|
+    |k_fu_104                              |   9|          2|    2|          4|
+    +--------------------------------------+----+-----------+-----+-----------+
+    |Total                                 | 279|         62|  127|        254|
+    +--------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-----------------------+---+----+-----+-----------+
+    |          Name         | FF| LUT| Bits| Const Bits|
+    +-----------------------+---+----+-----+-----------+
+    |ap_CS_fsm              |  1|   0|    1|          0|
+    |ap_done_reg            |  1|   0|    1|          0|
+    |ap_return_0_preg       |  4|   0|   18|         14|
+    |ap_return_10_preg      |  4|   0|   18|         14|
+    |ap_return_11_preg      |  4|   0|   18|         14|
+    |ap_return_12_preg      |  4|   0|   18|         14|
+    |ap_return_13_preg      |  4|   0|   18|         14|
+    |ap_return_14_preg      |  4|   0|   18|         14|
+    |ap_return_15_preg      |  4|   0|   18|         14|
+    |ap_return_16_preg      |  4|   0|   18|         14|
+    |ap_return_17_preg      |  4|   0|   18|         14|
+    |ap_return_18_preg      |  4|   0|   18|         14|
+    |ap_return_19_preg      |  4|   0|   18|         14|
+    |ap_return_1_preg       |  4|   0|   18|         14|
+    |ap_return_20_preg      |  4|   0|   18|         14|
+    |ap_return_21_preg      |  4|   0|   18|         14|
+    |ap_return_22_preg      |  4|   0|   18|         14|
+    |ap_return_23_preg      |  4|   0|   18|         14|
+    |ap_return_2_preg       |  4|   0|   18|         14|
+    |ap_return_3_preg       |  4|   0|   18|         14|
+    |ap_return_4_preg       |  4|   0|   18|         14|
+    |ap_return_5_preg       |  4|   0|   18|         14|
+    |ap_return_6_preg       |  4|   0|   18|         14|
+    |ap_return_7_preg       |  4|   0|   18|         14|
+    |ap_return_8_preg       |  4|   0|   18|         14|
+    |ap_return_9_preg       |  4|   0|   18|         14|
+    |i_fu_100               |  6|   0|    6|          0|
+    |indvar_flatten_fu_108  |  7|   0|    7|          0|
+    |k_fu_104               |  2|   0|    2|          0|
+    +-----------------------+---+----+-----+-----------+
+    |Total                  |113|   0|  449|        336|
+    +-----------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++--------------+-----+-----+------------+---------------------------------+--------------+
+|   RTL Ports  | Dir | Bits|  Protocol  |          Source Object          |    C Type    |
++--------------+-----+-----+------------+---------------------------------+--------------+
+|ap_clk        |   in|    1|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_rst        |   in|    1|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_start      |   in|    1|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_done       |  out|    1|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_continue   |   in|    1|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_idle       |  out|    1|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_ready      |  out|    1|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_0   |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_1   |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_2   |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_3   |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_4   |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_5   |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_6   |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_7   |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_8   |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_9   |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_10  |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_11  |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_12  |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_13  |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_14  |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_15  |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_16  |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_17  |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_18  |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_19  |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_20  |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_21  |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_22  |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
+|ap_return_23  |  out|   18|  ap_ctrl_hs|  run_Loop_VITIS_LOOP_87_3_proc.9|  return value|
++--------------+-----+-----+------------+---------------------------------+--------------+
+

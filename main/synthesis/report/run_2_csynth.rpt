@@ -1,0 +1,243 @@
+
+
+================================================================
+== Vitis HLS Report for 'run_2'
+================================================================
+* Date:           Wed Feb 25 16:06:46 2026
+
+* Version:        2025.1 (Build 6135595 on May 21 2025)
+* Project:        unet_pvm_top
+* Solution:       hls (Vivado IP Flow Target)
+* Product family: zynquplus
+* Target device:  xck26-sfvc784-2LV-c
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  5.00 ns|  4.414 ns|     0.50 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+------+------+----------+
+    |  Latency (cycles) |   Latency (absolute)  |   Interval  | Pipeline |
+    |   min   |   max   |    min    |    max    |  min |  max |   Type   |
+    +---------+---------+-----------+-----------+------+------+----------+
+    |     2195|     2195|  10.975 us|  10.975 us|  2194|  2194|  dataflow|
+    +---------+---------+-----------+-----------+------+------+----------+
+
+    + Detail: 
+        * Instance: 
+        +------------------------------------+---------------------------------+---------+---------+-----------+-----------+------+------+------------------------------------------------+
+        |                                    |                                 |  Latency (cycles) |   Latency (absolute)  |   Interval  |                    Pipeline                    |
+        |              Instance              |              Module             |   min   |   max   |    min    |    max    |  min |  max |                      Type                      |
+        +------------------------------------+---------------------------------+---------+---------+-----------+-----------+------+------+------------------------------------------------+
+        |run_Loop_VITIS_LOOP_87_3_proc_6_U0  |run_Loop_VITIS_LOOP_87_3_proc_6  |       98|       98|   0.490 us|   0.490 us|    97|    97|  loop auto-rewind stp (delay=0 clock cycles(s))|
+        |split_input_9_U0                    |split_input_9                    |       18|       18|  90.000 ns|  90.000 ns|    17|    17|  loop auto-rewind stp (delay=0 clock cycles(s))|
+        |forward_19_U0                       |forward_19                       |     2193|     2193|  10.965 us|  10.965 us|  2193|  2193|                                              no|
+        |forward_10_U0                       |forward_10                       |       18|       18|  90.000 ns|  90.000 ns|    17|    17|  loop auto-rewind stp (delay=0 clock cycles(s))|
+        |forward_23_U0                       |forward_23                       |      522|      522|   2.610 us|   2.610 us|   514|   514|  loop auto-rewind stp (delay=1 clock cycles(s))|
+        |forward_11_U0                       |forward_11                       |      520|      520|   2.600 us|   2.600 us|   513|   513|  loop auto-rewind stp (delay=0 clock cycles(s))|
+        |forward_12_U0                       |forward_12                       |     1034|     1034|   5.170 us|   5.170 us|  1031|  1031|  loop auto-rewind stp (delay=5 clock cycles(s))|
+        |forward_13_U0                       |forward_13                       |      519|      519|   2.595 us|   2.595 us|   513|   513|  loop auto-rewind stp (delay=0 clock cycles(s))|
+        +------------------------------------+---------------------------------+---------+---------+-----------+-----------+------+------+------------------------------------------------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       0|      26|    -|
+|FIFO             |      352|     -|    3608|    2002|    -|
+|Instance         |        2|    19|    8454|    9092|    0|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       0|      36|    -|
+|Register         |        -|     -|       6|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |      354|    19|   12068|   11156|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      288|  1248|  234240|  117120|   64|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |      122|     1|       5|       9|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    +------------------------------------+---------------------------------+---------+----+------+------+-----+
+    |              Instance              |              Module             | BRAM_18K| DSP|  FF  |  LUT | URAM|
+    +------------------------------------+---------------------------------+---------+----+------+------+-----+
+    |forward_10_U0                       |forward_10                       |        0|   0|     8|    96|    0|
+    |forward_11_U0                       |forward_11                       |        0|   3|  1366|   861|    0|
+    |forward_12_U0                       |forward_12                       |        2|   6|  1500|  1574|    0|
+    |forward_13_U0                       |forward_13                       |        0|   2|  1000|  1001|    0|
+    |forward_19_U0                       |forward_19                       |        0|   4|  1908|  3428|    0|
+    |forward_23_U0                       |forward_23                       |        0|   4|  2550|  1674|    0|
+    |run_Loop_VITIS_LOOP_87_3_proc_6_U0  |run_Loop_VITIS_LOOP_87_3_proc_6  |        0|   0|   113|   353|    0|
+    |split_input_9_U0                    |split_input_9                    |        0|   0|     9|   105|    0|
+    +------------------------------------+---------------------------------+---------+----+------+------+-----+
+    |Total                               |                                 |        2|  19|  8454|  9092|    0|
+    +------------------------------------+---------------------------------+---------+----+------+------+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    +------------------------------+---------+-----+----+-----+------+------+---------+
+    |             Name             | BRAM_18K|  FF | LUT| URAM| Depth| Bits | Size:D*B|
+    +------------------------------+---------+-----+----+-----+------+------+---------+
+    |p_lcssa23143_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa24145_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa25147_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa26149_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa27151_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa28153_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa29155_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa30157_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa55207_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa56209_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa57211_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa58213_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa59215_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa60217_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa61219_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa62221_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa87271_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa88273_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa89275_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa90277_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa91279_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa92281_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa93283_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |p_lcssa94285_loc_i_channel_U  |        0|   99|   0|    -|     4|    18|       72|
+    |s_conv_out_i_U                |       32|  151|   0|    -|    16|   576|     9216|
+    |s_gate_i_U                    |       32|  163|   0|    -|  1024|   576|   589824|
+    |s_in_norm_i_U                 |       32|  151|   0|    -|    16|   576|     9216|
+    |s_main_i_U                    |       32|  151|   0|    -|    16|   576|     9216|
+    |s_norm_out_i_U                |       32|  151|   0|    -|    16|   576|     9216|
+    |s_params_fwd_i_U              |      128|  151|   0|    -|    16|  2304|    36864|
+    |s_res_i_U                     |       32|  163|   0|    -|  1024|   576|   589824|
+    |s_ssm_out_i_U                 |       32|  151|   0|    -|    16|   576|     9216|
+    +------------------------------+---------+-----+----+-----+------+------+---------+
+    |Total                         |      352| 3608|   0|    0|  2240|  6768|  1264320|
+    +------------------------------+---------+-----+----+-----+------+------+---------+
+
+    * Expression: 
+    +-----------------------------------------------------+----------+----+---+----+------------+------------+
+    |                    Variable Name                    | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------------------------------------------+----------+----+---+----+------------+------------+
+    |ap_channel_done_p_lcssa23143_loc_i_channel           |       and|   0|  0|   2|           1|           1|
+    |ap_idle                                              |       and|   0|  0|   2|           1|           1|
+    |ap_sync_continue                                     |       and|   0|  0|   2|           1|           1|
+    |ap_sync_done                                         |       and|   0|  0|   2|           1|           1|
+    |ap_sync_ready                                        |       and|   0|  0|   2|           1|           1|
+    |forward_12_U0_ap_start                               |       and|   0|  0|   2|           1|           1|
+    |run_Loop_VITIS_LOOP_87_3_proc_6_U0_ap_start          |       and|   0|  0|   2|           1|           1|
+    |split_input_9_U0_ap_start                            |       and|   0|  0|   2|           1|           1|
+    |split_input_9_U0_start_full_n                        |       and|   0|  0|   2|           1|           1|
+    |ap_sync_channel_write_p_lcssa23143_loc_i_channel     |        or|   0|  0|   2|           1|           1|
+    |ap_sync_forward_12_U0_ap_ready                       |        or|   0|  0|   2|           1|           1|
+    |ap_sync_run_Loop_VITIS_LOOP_87_3_proc_6_U0_ap_ready  |        or|   0|  0|   2|           1|           1|
+    |ap_sync_split_input_9_U0_ap_ready                    |        or|   0|  0|   2|           1|           1|
+    +-----------------------------------------------------+----------+----+---+----+------------+------------+
+    |Total                                                |          |   0|  0|  26|          13|          13|
+    +-----------------------------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +---------------------------------------------------------+----+-----------+-----+-----------+
+    |                           Name                          | LUT| Input Size| Bits| Total Bits|
+    +---------------------------------------------------------+----+-----------+-----+-----------+
+    |ap_sync_reg_channel_write_p_lcssa23143_loc_i_channel     |   9|          2|    1|          2|
+    |ap_sync_reg_forward_12_U0_ap_ready                       |   9|          2|    1|          2|
+    |ap_sync_reg_run_Loop_VITIS_LOOP_87_3_proc_6_U0_ap_ready  |   9|          2|    1|          2|
+    |ap_sync_reg_split_input_9_U0_ap_ready                    |   9|          2|    1|          2|
+    +---------------------------------------------------------+----+-----------+-----+-----------+
+    |Total                                                    |  36|          8|    4|          8|
+    +---------------------------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +---------------------------------------------------------+---+----+-----+-----------+
+    |                           Name                          | FF| LUT| Bits| Const Bits|
+    +---------------------------------------------------------+---+----+-----+-----------+
+    |ap_sync_done                                             |  1|   0|    1|          0|
+    |ap_sync_ready                                            |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_p_lcssa23143_loc_i_channel     |  1|   0|    1|          0|
+    |ap_sync_reg_forward_12_U0_ap_ready                       |  1|   0|    1|          0|
+    |ap_sync_reg_run_Loop_VITIS_LOOP_87_3_proc_6_U0_ap_ready  |  1|   0|    1|          0|
+    |ap_sync_reg_split_input_9_U0_ap_ready                    |  1|   0|    1|          0|
+    +---------------------------------------------------------+---+----+-----+-----------+
+    |Total                                                    |  6|   0|    6|          0|
+    +---------------------------------------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-------------------------------------------------------------------+-----+-----+------------+----------------------------------------------------------+--------------+
+|                             RTL Ports                             | Dir | Bits|  Protocol  |                       Source Object                      |    C Type    |
++-------------------------------------------------------------------+-----+-----+------------+----------------------------------------------------------+--------------+
+|mamba_in_1_dout                                                    |   in|  576|     ap_fifo|                                                mamba_in_1|       pointer|
+|mamba_in_1_empty_n                                                 |   in|    1|     ap_fifo|                                                mamba_in_1|       pointer|
+|mamba_in_1_read                                                    |  out|    1|     ap_fifo|                                                mamba_in_1|       pointer|
+|mamba_out_1_din                                                    |  out|  576|     ap_fifo|                                               mamba_out_1|       pointer|
+|mamba_out_1_full_n                                                 |   in|    1|     ap_fifo|                                               mamba_out_1|       pointer|
+|mamba_out_1_write                                                  |  out|    1|     ap_fifo|                                               mamba_out_1|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_i            |   in|   18|     ap_ovld|     forward_int_stream_S6Params_0_stream_PixelVec_0_state|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_o            |  out|   18|     ap_ovld|     forward_int_stream_S6Params_0_stream_PixelVec_0_state|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_i_ap_vld     |   in|    1|     ap_ovld|     forward_int_stream_S6Params_0_stream_PixelVec_0_state|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_o_ap_vld     |  out|    1|     ap_ovld|     forward_int_stream_S6Params_0_stream_PixelVec_0_state|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_25_i         |   in|   18|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_25|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_25_o         |  out|   18|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_25|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_25_i_ap_vld  |   in|    1|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_25|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_25_o_ap_vld  |  out|    1|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_25|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_26_i         |   in|   18|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_26|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_26_o         |  out|   18|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_26|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_26_i_ap_vld  |   in|    1|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_26|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_26_o_ap_vld  |  out|    1|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_26|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_27_i         |   in|   18|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_27|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_27_o         |  out|   18|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_27|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_27_i_ap_vld  |   in|    1|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_27|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_27_o_ap_vld  |  out|    1|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_27|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_28_i         |   in|   18|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_28|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_28_o         |  out|   18|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_28|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_28_i_ap_vld  |   in|    1|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_28|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_28_o_ap_vld  |  out|    1|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_28|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_29_i         |   in|   18|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_29|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_29_o         |  out|   18|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_29|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_29_i_ap_vld  |   in|    1|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_29|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_29_o_ap_vld  |  out|    1|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_29|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_30_i         |   in|   18|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_30|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_30_o         |  out|   18|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_30|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_30_i_ap_vld  |   in|    1|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_30|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_30_o_ap_vld  |  out|    1|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_30|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_31_i         |   in|   18|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_31|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_31_o         |  out|   18|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_31|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_31_i_ap_vld  |   in|    1|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_31|       pointer|
+|forward_int_stream_S6Params_0_stream_PixelVec_0_state_31_o_ap_vld  |  out|    1|     ap_ovld|  forward_int_stream_S6Params_0_stream_PixelVec_0_state_31|       pointer|
+|ap_clk                                                             |   in|    1|  ap_ctrl_hs|                                                     run.2|  return value|
+|ap_rst                                                             |   in|    1|  ap_ctrl_hs|                                                     run.2|  return value|
+|ap_start                                                           |   in|    1|  ap_ctrl_hs|                                                     run.2|  return value|
+|ap_done                                                            |  out|    1|  ap_ctrl_hs|                                                     run.2|  return value|
+|ap_ready                                                           |  out|    1|  ap_ctrl_hs|                                                     run.2|  return value|
+|ap_idle                                                            |  out|    1|  ap_ctrl_hs|                                                     run.2|  return value|
+|ap_continue                                                        |   in|    1|  ap_ctrl_hs|                                                     run.2|  return value|
++-------------------------------------------------------------------+-----+-----+------------+----------------------------------------------------------+--------------+
+

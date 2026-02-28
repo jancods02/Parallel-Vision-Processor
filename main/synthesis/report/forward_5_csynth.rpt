@@ -1,0 +1,157 @@
+
+
+================================================================
+== Vitis HLS Report for 'forward_5'
+================================================================
+* Date:           Wed Feb 25 16:06:14 2026
+
+* Version:        2025.1 (Build 6135595 on May 21 2025)
+* Project:        unet_pvm_top
+* Solution:       hls (Vivado IP Flow Target)
+* Product family: zynquplus
+* Target device:  xck26-sfvc784-2LV-c
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  5.00 ns|  3.370 ns|     0.50 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+-----+-----+------------------------------------------------+
+    |  Latency (cycles) |   Latency (absolute)  |  Interval |                    Pipeline                    |
+    |   min   |   max   |    min    |    max    | min | max |                      Type                      |
+    +---------+---------+-----------+-----------+-----+-----+------------------------------------------------+
+    |       18|       18|  90.000 ns|  90.000 ns|   17|   17|  loop auto-rewind stp (delay=0 clock cycles(s))|
+    +---------+---------+-----------+-----------+-----+-----+------------------------------------------------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                   |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |     Loop Name     |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- VITIS_LOOP_64_1  |       16|       16|         2|          1|          1|    16|       yes|
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       0|      33|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |        -|     -|       -|       -|    -|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       0|      63|    -|
+|Register         |        -|     -|       8|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |        0|     0|       8|      96|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      288|  1248|  234240|  117120|   64|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        0|     0|      ~0|      ~0|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +---------------------------------------+----------+----+---+----+------------+------------+
+    |             Variable Name             | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------------------------+----------+----+---+----+------------+------------+
+    |t_10_fu_78_p2                          |         +|   0|  0|  12|           5|           1|
+    |ap_condition_98                        |       and|   0|  0|   2|           1|           1|
+    |icmp_ln64_fu_72_p2                     |      icmp|   0|  0|  13|           5|           6|
+    |ap_block_pp0_stage0_01001_grp1         |        or|   0|  0|   2|           1|           1|
+    |ap_block_state2_pp0_stage0_iter1_grp1  |        or|   0|  0|   2|           1|           1|
+    |ap_enable_pp0                          |       xor|   0|  0|   2|           1|           2|
+    +---------------------------------------+----------+----+---+----+------------+------------+
+    |Total                                  |          |   0|  0|  33|          14|          12|
+    +---------------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------+----+-----------+-----+-----------+
+    |           Name          | LUT| Input Size| Bits| Total Bits|
+    +-------------------------+----+-----------+-----+-----------+
+    |ap_done_int              |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1  |   9|          2|    1|          2|
+    |ap_sig_allocacmp_t       |   9|          2|    5|         10|
+    |s_gate_blk_n             |   9|          2|    1|          2|
+    |s_main_blk_n             |   9|          2|    1|          2|
+    |s_norm_out_blk_n         |   9|          2|    1|          2|
+    |t_03_fu_38               |   9|          2|    5|         10|
+    +-------------------------+----+-----------+-----+-----------+
+    |Total                    |  63|         14|   15|         30|
+    +-------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------+---+----+-----+-----------+
+    |           Name          | FF| LUT| Bits| Const Bits|
+    +-------------------------+---+----+-----+-----------+
+    |ap_CS_fsm                |  1|   0|    1|          0|
+    |ap_done_reg              |  1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1  |  1|   0|    1|          0|
+    |t_03_fu_38               |  5|   0|    5|          0|
+    +-------------------------+---+----+-----+-----------+
+    |Total                    |  8|   0|    8|          0|
+    +-------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++---------------------------+-----+-----+------------+--------------+--------------+
+|         RTL Ports         | Dir | Bits|  Protocol  | Source Object|    C Type    |
++---------------------------+-----+-----+------------+--------------+--------------+
+|ap_clk                     |   in|    1|  ap_ctrl_hs|     forward.5|  return value|
+|ap_rst                     |   in|    1|  ap_ctrl_hs|     forward.5|  return value|
+|ap_start                   |   in|    1|  ap_ctrl_hs|     forward.5|  return value|
+|ap_done                    |  out|    1|  ap_ctrl_hs|     forward.5|  return value|
+|ap_continue                |   in|    1|  ap_ctrl_hs|     forward.5|  return value|
+|ap_idle                    |  out|    1|  ap_ctrl_hs|     forward.5|  return value|
+|ap_ready                   |  out|    1|  ap_ctrl_hs|     forward.5|  return value|
+|s_norm_out_dout            |   in|  576|     ap_fifo|    s_norm_out|       pointer|
+|s_norm_out_empty_n         |   in|    1|     ap_fifo|    s_norm_out|       pointer|
+|s_norm_out_read            |  out|    1|     ap_fifo|    s_norm_out|       pointer|
+|s_norm_out_num_data_valid  |   in|    5|     ap_fifo|    s_norm_out|       pointer|
+|s_norm_out_fifo_cap        |   in|    5|     ap_fifo|    s_norm_out|       pointer|
+|s_main_din                 |  out|  576|     ap_fifo|        s_main|       pointer|
+|s_main_full_n              |   in|    1|     ap_fifo|        s_main|       pointer|
+|s_main_write               |  out|    1|     ap_fifo|        s_main|       pointer|
+|s_main_num_data_valid      |   in|   32|     ap_fifo|        s_main|       pointer|
+|s_main_fifo_cap            |   in|   32|     ap_fifo|        s_main|       pointer|
+|s_gate_din                 |  out|  576|     ap_fifo|        s_gate|       pointer|
+|s_gate_full_n              |   in|    1|     ap_fifo|        s_gate|       pointer|
+|s_gate_write               |  out|    1|     ap_fifo|        s_gate|       pointer|
+|s_gate_num_data_valid      |   in|   32|     ap_fifo|        s_gate|       pointer|
+|s_gate_fifo_cap            |   in|   32|     ap_fifo|        s_gate|       pointer|
++---------------------------+-----+-----+------------+--------------+--------------+
+

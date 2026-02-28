@@ -1,0 +1,342 @@
+
+
+================================================================
+== Vitis HLS Report for 'pvm_merge_and_project_config_enc5_Pipeline_VITIS_LOOP_139_8'
+================================================================
+* Date:           Wed Feb 25 16:07:23 2026
+
+* Version:        2025.1 (Build 6135595 on May 21 2025)
+* Project:        unet_pvm_top
+* Solution:       hls (Vivado IP Flow Target)
+* Product family: zynquplus
+* Target device:  xck26-sfvc784-2LV-c
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  5.00 ns|  3.392 ns|     0.50 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval |                    Pipeline                    |
+    |   min   |   max   |    min   |    max   | min | max |                      Type                      |
+    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+    |       37|       37|  0.185 us|  0.185 us|   33|   33|  loop auto-rewind stp (delay=0 clock cycles(s))|
+    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +--------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                    |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |      Loop Name     |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +--------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- VITIS_LOOP_139_8  |       35|       35|         5|          1|          1|    32|       yes|
+        +--------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     1|       -|       -|    -|
+|Expression       |        -|     -|       0|     168|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |        -|     -|       0|     148|    -|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       0|      36|    -|
+|Register         |        -|     -|     831|      64|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |        0|     1|     831|     416|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      288|  1248|  234240|  117120|   64|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        0|    ~0|      ~0|      ~0|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    +----------------------------+-----------------------+---------+----+---+-----+-----+
+    |          Instance          |         Module        | BRAM_18K| DSP| FF| LUT | URAM|
+    +----------------------------+-----------------------+---------+----+---+-----+-----+
+    |sparsemux_65_5_18_1_1_U927  |sparsemux_65_5_18_1_1  |        0|   0|  0|  148|    0|
+    +----------------------------+-----------------------+---------+----+---+-----+-----+
+    |Total                       |                       |        0|   0|  0|  148|    0|
+    +----------------------------+-----------------------+---------+----+---+-----+-----+
+
+    * DSP: 
+    +-----------------------------------+------------------------------+----------------+
+    |              Instance             |            Module            |   Expression   |
+    +-----------------------------------+------------------------------+----------------+
+    |am_submul_18s_18s_18s_37_4_1_U928  |am_submul_18s_18s_18s_37_4_1  |  (i0 - i1) * i2|
+    +-----------------------------------+------------------------------+----------------+
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +---------------------------+----------+----+---+----+------------+------------+
+    |       Variable Name       | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------------+----------+----+---+----+------------+------------+
+    |add_ln139_fu_844_p2        |         +|   0|  0|  13|           6|           1|
+    |add_ln141_fu_1098_p2       |         +|   0|  0|  25|          18|          18|
+    |and_ln141_1_fu_1177_p2     |       and|   0|  0|   2|           1|           1|
+    |and_ln141_2_fu_1191_p2     |       and|   0|  0|   2|           1|           1|
+    |and_ln141_3_fu_1215_p2     |       and|   0|  0|   2|           1|           1|
+    |and_ln141_4_fu_1221_p2     |       and|   0|  0|   2|           1|           1|
+    |and_ln141_5_fu_1239_p2     |       and|   0|  0|   2|           1|           1|
+    |and_ln141_fu_1118_p2       |       and|   0|  0|   2|           1|           1|
+    |icmp_ln139_fu_838_p2       |      icmp|   0|  0|  14|           6|           7|
+    |icmp_ln141_1_fu_1151_p2    |      icmp|   0|  0|  16|           9|           2|
+    |icmp_ln141_2_fu_1157_p2    |      icmp|   0|  0|  16|           9|           1|
+    |icmp_ln141_fu_1138_p2      |      icmp|   0|  0|  15|           8|           2|
+    |or_ln141_1_fu_1253_p2      |        or|   0|  0|   2|           1|           1|
+    |or_ln141_2_fu_1227_p2      |        or|   0|  0|   2|           1|           1|
+    |or_ln141_fu_1203_p2        |        or|   0|  0|   2|           1|           1|
+    |norm_merged_32_fu_1259_p3  |    select|   0|  0|  17|           1|          18|
+    |select_ln141_1_fu_1183_p3  |    select|   0|  0|   2|           1|           1|
+    |select_ln141_2_fu_1245_p3  |    select|   0|  0|  18|           1|          17|
+    |select_ln141_fu_1163_p3    |    select|   0|  0|   2|           1|           1|
+    |ap_enable_pp0              |       xor|   0|  0|   2|           1|           2|
+    |xor_ln141_1_fu_1171_p2     |       xor|   0|  0|   2|           1|           2|
+    |xor_ln141_2_fu_1197_p2     |       xor|   0|  0|   2|           1|           2|
+    |xor_ln141_3_fu_1209_p2     |       xor|   0|  0|   2|           1|           2|
+    |xor_ln141_4_fu_1233_p2     |       xor|   0|  0|   2|           1|           2|
+    |xor_ln141_fu_1112_p2       |       xor|   0|  0|   2|           1|           2|
+    +---------------------------+----------+----+---+----+------------+------------+
+    |Total                      |          |   0|  0| 168|          75|          89|
+    +---------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------+----+-----------+-----+-----------+
+    |           Name          | LUT| Input Size| Bits| Total Bits|
+    +-------------------------+----+-----------+-----+-----------+
+    |ap_done_int              |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1  |   9|          2|    1|          2|
+    |ap_sig_allocacmp_c_3     |   9|          2|    6|         12|
+    |c_fu_262                 |   9|          2|    6|         12|
+    +-------------------------+----+-----------+-----+-----------+
+    |Total                    |  36|          8|   14|         28|
+    +-------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +----------------------------------+----+----+-----+-----------+
+    |               Name               | FF | LUT| Bits| Const Bits|
+    +----------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                         |   1|   0|    1|          0|
+    |ap_done_reg                       |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter2           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter3           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter4           |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter1_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter2_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter3_reg  |   1|   0|    1|          0|
+    |ap_predicate_pred357_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred374_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred383_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred392_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred401_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred410_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred419_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred428_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred437_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred446_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred455_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred464_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred473_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred482_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred491_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred500_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred509_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred518_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred527_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred536_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred545_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred554_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred563_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred572_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred581_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred590_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred599_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred608_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred617_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred626_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred635_state5       |   1|   0|    1|          0|
+    |ap_predicate_pred644_state5       |   1|   0|    1|          0|
+    |c_fu_262                          |   6|   0|    6|          0|
+    |conv7_i69_cast_reg_1767           |  37|   0|   37|          0|
+    |conv_i_i16_i739_cast_reg_1772     |  19|   0|   19|          0|
+    |icmp_ln139_reg_1777               |   1|   0|    1|          0|
+    |norm_merged_10_fu_306             |  18|   0|   18|          0|
+    |norm_merged_11_fu_310             |  18|   0|   18|          0|
+    |norm_merged_12_fu_314             |  18|   0|   18|          0|
+    |norm_merged_13_fu_318             |  18|   0|   18|          0|
+    |norm_merged_14_fu_322             |  18|   0|   18|          0|
+    |norm_merged_15_fu_326             |  18|   0|   18|          0|
+    |norm_merged_16_fu_330             |  18|   0|   18|          0|
+    |norm_merged_17_fu_334             |  18|   0|   18|          0|
+    |norm_merged_18_fu_338             |  18|   0|   18|          0|
+    |norm_merged_19_fu_342             |  18|   0|   18|          0|
+    |norm_merged_1_fu_270              |  18|   0|   18|          0|
+    |norm_merged_20_fu_346             |  18|   0|   18|          0|
+    |norm_merged_21_fu_350             |  18|   0|   18|          0|
+    |norm_merged_22_fu_354             |  18|   0|   18|          0|
+    |norm_merged_23_fu_358             |  18|   0|   18|          0|
+    |norm_merged_24_fu_362             |  18|   0|   18|          0|
+    |norm_merged_25_fu_366             |  18|   0|   18|          0|
+    |norm_merged_26_fu_370             |  18|   0|   18|          0|
+    |norm_merged_27_fu_374             |  18|   0|   18|          0|
+    |norm_merged_28_fu_378             |  18|   0|   18|          0|
+    |norm_merged_29_fu_382             |  18|   0|   18|          0|
+    |norm_merged_2_fu_274              |  18|   0|   18|          0|
+    |norm_merged_30_fu_386             |  18|   0|   18|          0|
+    |norm_merged_31_fu_390             |  18|   0|   18|          0|
+    |norm_merged_3_fu_278              |  18|   0|   18|          0|
+    |norm_merged_4_fu_282              |  18|   0|   18|          0|
+    |norm_merged_5_fu_286              |  18|   0|   18|          0|
+    |norm_merged_6_fu_290              |  18|   0|   18|          0|
+    |norm_merged_7_fu_294              |  18|   0|   18|          0|
+    |norm_merged_8_fu_298              |  18|   0|   18|          0|
+    |norm_merged_9_fu_302              |  18|   0|   18|          0|
+    |norm_merged_fu_266                |  18|   0|   18|          0|
+    |tmp_138_reg_1785                  |  18|   0|   18|          0|
+    |trunc_ln139_reg_1781              |   5|   0|    5|          0|
+    |icmp_ln139_reg_1777               |  64|  32|    1|          0|
+    |trunc_ln139_reg_1781              |  64|  32|    5|          0|
+    +----------------------------------+----+----+-----+-----------+
+    |Total                             | 831|  64|  709|          0|
+    +----------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++---------------------------+-----+-----+------------+--------------------------------------------------------------+--------------+
+|         RTL Ports         | Dir | Bits|  Protocol  |                         Source Object                        |    C Type    |
++---------------------------+-----+-----+------------+--------------------------------------------------------------+--------------+
+|ap_clk                     |   in|    1|  ap_ctrl_hs|  pvm_merge_and_project<config_enc5>_Pipeline_VITIS_LOOP_139_8|  return value|
+|ap_rst                     |   in|    1|  ap_ctrl_hs|  pvm_merge_and_project<config_enc5>_Pipeline_VITIS_LOOP_139_8|  return value|
+|ap_start                   |   in|    1|  ap_ctrl_hs|  pvm_merge_and_project<config_enc5>_Pipeline_VITIS_LOOP_139_8|  return value|
+|ap_done                    |  out|    1|  ap_ctrl_hs|  pvm_merge_and_project<config_enc5>_Pipeline_VITIS_LOOP_139_8|  return value|
+|ap_idle                    |  out|    1|  ap_ctrl_hs|  pvm_merge_and_project<config_enc5>_Pipeline_VITIS_LOOP_139_8|  return value|
+|ap_ready                   |  out|    1|  ap_ctrl_hs|  pvm_merge_and_project<config_enc5>_Pipeline_VITIS_LOOP_139_8|  return value|
+|merged_reload              |   in|   18|     ap_none|                                                 merged_reload|        scalar|
+|merged_1_reload            |   in|   18|     ap_none|                                               merged_1_reload|        scalar|
+|merged_2_reload            |   in|   18|     ap_none|                                               merged_2_reload|        scalar|
+|merged_3_reload            |   in|   18|     ap_none|                                               merged_3_reload|        scalar|
+|merged_4_reload            |   in|   18|     ap_none|                                               merged_4_reload|        scalar|
+|merged_5_reload            |   in|   18|     ap_none|                                               merged_5_reload|        scalar|
+|merged_6_reload            |   in|   18|     ap_none|                                               merged_6_reload|        scalar|
+|merged_7_reload            |   in|   18|     ap_none|                                               merged_7_reload|        scalar|
+|merged_8_reload            |   in|   18|     ap_none|                                               merged_8_reload|        scalar|
+|merged_9_reload            |   in|   18|     ap_none|                                               merged_9_reload|        scalar|
+|merged_10_reload           |   in|   18|     ap_none|                                              merged_10_reload|        scalar|
+|merged_11_reload           |   in|   18|     ap_none|                                              merged_11_reload|        scalar|
+|merged_12_reload           |   in|   18|     ap_none|                                              merged_12_reload|        scalar|
+|merged_13_reload           |   in|   18|     ap_none|                                              merged_13_reload|        scalar|
+|merged_14_reload           |   in|   18|     ap_none|                                              merged_14_reload|        scalar|
+|merged_15_reload           |   in|   18|     ap_none|                                              merged_15_reload|        scalar|
+|merged_16_reload           |   in|   18|     ap_none|                                              merged_16_reload|        scalar|
+|merged_17_reload           |   in|   18|     ap_none|                                              merged_17_reload|        scalar|
+|merged_18_reload           |   in|   18|     ap_none|                                              merged_18_reload|        scalar|
+|merged_19_reload           |   in|   18|     ap_none|                                              merged_19_reload|        scalar|
+|merged_20_reload           |   in|   18|     ap_none|                                              merged_20_reload|        scalar|
+|merged_21_reload           |   in|   18|     ap_none|                                              merged_21_reload|        scalar|
+|merged_22_reload           |   in|   18|     ap_none|                                              merged_22_reload|        scalar|
+|merged_23_reload           |   in|   18|     ap_none|                                              merged_23_reload|        scalar|
+|merged_24_reload           |   in|   18|     ap_none|                                              merged_24_reload|        scalar|
+|merged_25_reload           |   in|   18|     ap_none|                                              merged_25_reload|        scalar|
+|merged_26_reload           |   in|   18|     ap_none|                                              merged_26_reload|        scalar|
+|merged_27_reload           |   in|   18|     ap_none|                                              merged_27_reload|        scalar|
+|merged_28_reload           |   in|   18|     ap_none|                                              merged_28_reload|        scalar|
+|merged_29_reload           |   in|   18|     ap_none|                                              merged_29_reload|        scalar|
+|merged_30_reload           |   in|   18|     ap_none|                                              merged_30_reload|        scalar|
+|merged_31_reload           |   in|   18|     ap_none|                                              merged_31_reload|        scalar|
+|conv_i_i16_i739            |   in|   18|     ap_none|                                               conv_i_i16_i739|        scalar|
+|conv7_i69                  |   in|   18|     ap_none|                                                     conv7_i69|        scalar|
+|norm_merged_31_out         |  out|   18|      ap_vld|                                            norm_merged_31_out|       pointer|
+|norm_merged_31_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_31_out|       pointer|
+|norm_merged_30_out         |  out|   18|      ap_vld|                                            norm_merged_30_out|       pointer|
+|norm_merged_30_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_30_out|       pointer|
+|norm_merged_29_out         |  out|   18|      ap_vld|                                            norm_merged_29_out|       pointer|
+|norm_merged_29_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_29_out|       pointer|
+|norm_merged_28_out         |  out|   18|      ap_vld|                                            norm_merged_28_out|       pointer|
+|norm_merged_28_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_28_out|       pointer|
+|norm_merged_27_out         |  out|   18|      ap_vld|                                            norm_merged_27_out|       pointer|
+|norm_merged_27_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_27_out|       pointer|
+|norm_merged_26_out         |  out|   18|      ap_vld|                                            norm_merged_26_out|       pointer|
+|norm_merged_26_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_26_out|       pointer|
+|norm_merged_25_out         |  out|   18|      ap_vld|                                            norm_merged_25_out|       pointer|
+|norm_merged_25_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_25_out|       pointer|
+|norm_merged_24_out         |  out|   18|      ap_vld|                                            norm_merged_24_out|       pointer|
+|norm_merged_24_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_24_out|       pointer|
+|norm_merged_23_out         |  out|   18|      ap_vld|                                            norm_merged_23_out|       pointer|
+|norm_merged_23_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_23_out|       pointer|
+|norm_merged_22_out         |  out|   18|      ap_vld|                                            norm_merged_22_out|       pointer|
+|norm_merged_22_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_22_out|       pointer|
+|norm_merged_21_out         |  out|   18|      ap_vld|                                            norm_merged_21_out|       pointer|
+|norm_merged_21_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_21_out|       pointer|
+|norm_merged_20_out         |  out|   18|      ap_vld|                                            norm_merged_20_out|       pointer|
+|norm_merged_20_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_20_out|       pointer|
+|norm_merged_19_out         |  out|   18|      ap_vld|                                            norm_merged_19_out|       pointer|
+|norm_merged_19_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_19_out|       pointer|
+|norm_merged_18_out         |  out|   18|      ap_vld|                                            norm_merged_18_out|       pointer|
+|norm_merged_18_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_18_out|       pointer|
+|norm_merged_17_out         |  out|   18|      ap_vld|                                            norm_merged_17_out|       pointer|
+|norm_merged_17_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_17_out|       pointer|
+|norm_merged_16_out         |  out|   18|      ap_vld|                                            norm_merged_16_out|       pointer|
+|norm_merged_16_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_16_out|       pointer|
+|norm_merged_15_out         |  out|   18|      ap_vld|                                            norm_merged_15_out|       pointer|
+|norm_merged_15_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_15_out|       pointer|
+|norm_merged_14_out         |  out|   18|      ap_vld|                                            norm_merged_14_out|       pointer|
+|norm_merged_14_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_14_out|       pointer|
+|norm_merged_13_out         |  out|   18|      ap_vld|                                            norm_merged_13_out|       pointer|
+|norm_merged_13_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_13_out|       pointer|
+|norm_merged_12_out         |  out|   18|      ap_vld|                                            norm_merged_12_out|       pointer|
+|norm_merged_12_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_12_out|       pointer|
+|norm_merged_11_out         |  out|   18|      ap_vld|                                            norm_merged_11_out|       pointer|
+|norm_merged_11_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_11_out|       pointer|
+|norm_merged_10_out         |  out|   18|      ap_vld|                                            norm_merged_10_out|       pointer|
+|norm_merged_10_out_ap_vld  |  out|    1|      ap_vld|                                            norm_merged_10_out|       pointer|
+|norm_merged_9_out          |  out|   18|      ap_vld|                                             norm_merged_9_out|       pointer|
+|norm_merged_9_out_ap_vld   |  out|    1|      ap_vld|                                             norm_merged_9_out|       pointer|
+|norm_merged_8_out          |  out|   18|      ap_vld|                                             norm_merged_8_out|       pointer|
+|norm_merged_8_out_ap_vld   |  out|    1|      ap_vld|                                             norm_merged_8_out|       pointer|
+|norm_merged_7_out          |  out|   18|      ap_vld|                                             norm_merged_7_out|       pointer|
+|norm_merged_7_out_ap_vld   |  out|    1|      ap_vld|                                             norm_merged_7_out|       pointer|
+|norm_merged_6_out          |  out|   18|      ap_vld|                                             norm_merged_6_out|       pointer|
+|norm_merged_6_out_ap_vld   |  out|    1|      ap_vld|                                             norm_merged_6_out|       pointer|
+|norm_merged_5_out          |  out|   18|      ap_vld|                                             norm_merged_5_out|       pointer|
+|norm_merged_5_out_ap_vld   |  out|    1|      ap_vld|                                             norm_merged_5_out|       pointer|
+|norm_merged_4_out          |  out|   18|      ap_vld|                                             norm_merged_4_out|       pointer|
+|norm_merged_4_out_ap_vld   |  out|    1|      ap_vld|                                             norm_merged_4_out|       pointer|
+|norm_merged_3_out          |  out|   18|      ap_vld|                                             norm_merged_3_out|       pointer|
+|norm_merged_3_out_ap_vld   |  out|    1|      ap_vld|                                             norm_merged_3_out|       pointer|
+|norm_merged_2_out          |  out|   18|      ap_vld|                                             norm_merged_2_out|       pointer|
+|norm_merged_2_out_ap_vld   |  out|    1|      ap_vld|                                             norm_merged_2_out|       pointer|
+|norm_merged_1_out          |  out|   18|      ap_vld|                                             norm_merged_1_out|       pointer|
+|norm_merged_1_out_ap_vld   |  out|    1|      ap_vld|                                             norm_merged_1_out|       pointer|
+|norm_merged_out            |  out|   18|      ap_vld|                                               norm_merged_out|       pointer|
+|norm_merged_out_ap_vld     |  out|    1|      ap_vld|                                               norm_merged_out|       pointer|
++---------------------------+-----+-----+------------+--------------------------------------------------------------+--------------+
+
